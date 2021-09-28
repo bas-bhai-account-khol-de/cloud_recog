@@ -1,0 +1,6 @@
+[submodule "third_party/opencv"]
+	path = third_party/opencv
+	url = https://github.com/bas-bhai-account-khol-de/opencv.git
+[submodule "third_party/opencv_contrib"]
+	path = third_party/opencv_contrib
+	url = https://github.com/bas-bhai-account-khol-de/opencv_contrib.git
