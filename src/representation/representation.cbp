@@ -2,12 +2,12 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="test" />
+		<Option title="representation" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Release">
-				<Option output="bin/Release/test" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/representation" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="../../external_dependency_builds/opencv/lib" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
@@ -15,6 +15,7 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add directory="../../headers" />
+					<Add directory="../logic/include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -75,6 +76,7 @@
 					<Add library="../../external_dependency_builds/opencv/lib/libopencv_xfeatures2d.so" />
 					<Add library="../../external_dependency_builds/opencv/lib/libopencv_xobjdetect.so" />
 					<Add library="../../external_dependency_builds/opencv/lib/libopencv_xphoto.so" />
+					<Add library="../logic/bin/Release/liblogic.a" />
 				</Linker>
 			</Target>
 		</Build>

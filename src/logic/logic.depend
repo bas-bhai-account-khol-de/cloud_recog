@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1632844647 source:/media/prakhar/Linux FIles/Flam Apps/Testing and experiment/cloud_recog/src/logic/main.cpp
+	"reco.h"
+
+1632844825 /media/prakhar/Linux FIles/Flam Apps/Testing and experiment/cloud_recog/src/logic/include/reco.h
+	<iostream>
+
