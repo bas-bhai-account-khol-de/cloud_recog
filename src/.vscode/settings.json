@@ -1,6 +1,15 @@
 {
     "C_Cpp.errorSquiggles": "Disabled",
     "files.associations": {
-        "cstring": "cpp"
+        "cstring": "cpp",
+        "cmath": "cpp",
+        "cstdio": "cpp",
+        "cstdlib": "cpp",
+        "ctime": "cpp",
+        "limits": "cpp",
+        "*.tcc": "cpp",
+        "cstdint": "cpp",
+        "type_traits": "cpp",
+        "typeinfo": "cpp"
     }
 }

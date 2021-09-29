@@ -1,0 +1,127 @@
+#include"reco.h"
+
+
+void init_reco(int v)
+{
+    cout<<"Recognization library initilized int v"<<endl;
+}
+
+
+void import_from_directory(_vi &images,string folder_name )
+{
+
+
+    if(folder_name == "")
+    {
+        cerr<< "DATASET_LOADING: Please enter a valid address......";
+        return ;
+    }
+    struct dirent *entry;
+    DIR *dir = opendir(folder_name.c_str());
+
+    if (dir == NULL) {
+        return ;
+    }
+    int i=0;
+    while ((entry = readdir(dir)) != NULL) {
+    if(!strcmp(".",entry->d_name)|| !strcmp("..",entry->d_name))
+    {
+        continue;
+    }
+    i++;
+    cout << "DATASET_LOADING: "<<entry->d_name << " "<<i<<endl;
+    vision::Mat image_temp = vision::imread(folder_name+"/"+entry->d_name,vision::IMREAD_GRAYSCALE);
+    images.push_back(image_temp);
+
+    }
+    closedir(dir);
+    dbg_d(images.size());
+    return ;
+
+}
+
+
+
+
+void compute_feature(_vi &images,_vkps &kp_dataset,_vgpuM &desc_dataset,unsigned int max_features )
+{
+
+    dbg_messsage("FEATURE_EXTRACTION: Copmutation started");
+    //*********************************************************
+    //INITILIZATIONS
+
+    vision::cuda::Stream current_stream;
+    vision::Ptr<vision::cuda::ORB> p_orb_d = vision::cuda::ORB::create();
+    p_orb_d->setBlurForDescriptor(true);
+    //---------------------------------------------------
+    int i=0;
+    for (auto img : images)
+    {
+        i++;
+        try
+        {vision::cuda::GpuMat gpuimage;
+        //upload image to gpu
+        gpuimage.upload(img);
+        vision::cuda::GpuMat kp_d;
+        vision::cuda::GpuMat desc_d;
+        p_orb_d->detectAndComputeAsync(gpuimage,vision::cuda::GpuMat(), kp_d, desc_d, false, current_stream);
+        current_stream.waitForCompletion();
+        std::vector<vision::KeyPoint> keypointsCPU;
+        p_orb_d->convert(kp_d,keypointsCPU);
+        kp_dataset.push_back(keypointsCPU);
+        desc_dataset.push_back(desc_d);}
+        catch(...)
+        {
+            dbg_messsage("FEATURE_EXTRACTION: image failes ");
+            dbg_d(i);
+        }
+    }
+
+    dbg_messsage("FEATURE_EXTRACTION: calculated FEATURES for every image");
+
+}
+
+
+void compare_image(string query_image_path , _vkps &keypoints,_vgpuM &descriptors,_vi &images)
+{
+    vision::Mat image_temp = vision::imread(query_image_path,vision::IMREAD_GRAYSCALE);
+    vision::Ptr<vision::cuda::ORB> p_orb_d = vision::cuda::ORB::create();
+    p_orb_d->setBlurForDescriptor(true);
+    vision::cuda::GpuMat kp_d;
+    vision::cuda::GpuMat desc_d;
+    vision::cuda::GpuMat gpuimage;
+    gpuimage.upload(image_temp);
+    vision::cuda::Stream current_stream;
+    p_orb_d->detectAndComputeAsync(gpuimage,vision::cuda::GpuMat(), kp_d, desc_d, false, current_stream);
+    current_stream.waitForCompletion();
+    vector<vision::KeyPoint> keypoints_temp;
+    p_orb_d->convert(kp_d,keypoints_temp);
+    vision::Ptr<vision::cuda::DescriptorMatcher> matcher = vision::cuda::DescriptorMatcher::createBFMatcher(vision::NORM_HAMMING);
+    dbg_messsage("COMPARE_IMAGE: initilized matcher");
+    vector<int> feature_point_match_count;
+    clock_t begin = clock();
+    for(int i=0;i<descriptors.size();i++)
+    {
+        int feature_point_matches_count=0;
+        std::vector<std::vector<vision::DMatch> > knn_matches_temp;
+        matcher->knnMatch(desc_d,descriptors[i],knn_matches_temp,2);
+        for(std::vector<std::vector<vision::DMatch> >::const_iterator it = knn_matches_temp.begin(); it != knn_matches_temp.end(); ++it)
+        {
+            if(it->size() > 1 && (*it)[0].distance/(*it)[1].distance < 0.6)
+            {
+               feature_point_matches_count++;
+            }
+        }
+        feature_point_match_count.push_back(feature_point_matches_count);
+
+    }
+    clock_t end = clock();
+    std::cout << double(end-begin) / CLOCKS_PER_SEC  << std::endl;
+    int index_max_element  = distance(feature_point_match_count.begin(),max_element(feature_point_match_count.begin(),feature_point_match_count.end()));
+    dbg_d(index_max_element);
+
+    vision::imshow("frame",images[index_max_element]);
+    vision::waitKey(0);
+
+
+}
