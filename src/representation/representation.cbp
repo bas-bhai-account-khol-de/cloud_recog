@@ -16,6 +16,7 @@
 					<Add option="-O2" />
 					<Add directory="../../headers" />
 					<Add directory="../logic/include" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -84,6 +85,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/sources.h" />
 		<Unit filename="main.cpp" />
 		<Extensions />
 	</Project>

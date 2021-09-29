@@ -1,0 +1,6 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/media/prakhar/Linux FIles/Flam Apps/Testing and experiment/cloud_recog/src'
+make: Leaving directory '/media/prakhar/Linux FIles/Flam Apps/Testing and experiment/cloud_recog/src'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+ 

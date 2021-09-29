@@ -1,0 +1,9 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/media/prakhar/Linux FIles/Flam Apps/Testing and experiment/cloud_recog/src/logic'
+test -d bin/Release || mkdir -p bin/Release
+test -d obj/Release || mkdir -p obj/Release
+g++ -Wall -fexceptions -O2  -I../../headers -Iinclude -c main.cpp -o obj/Release/main.o
+ 
+ar rcs bin/Release/liblogic.a obj/Release/main.o
+make: Leaving directory '/media/prakhar/Linux FIles/Flam Apps/Testing and experiment/cloud_recog/src/logic'
+ 
