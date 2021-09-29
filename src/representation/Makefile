@@ -16,20 +16,21 @@ CFLAGS = -Wall -fexceptions
 RESINC = 
 LIBDIR = 
 LIB = 
-LDFLAGS = 
+LDFLAGS = -nostdlib
 
-INC_RELEASE = $(INC) -I../../headers -Iinclude
-CFLAGS_RELEASE = $(CFLAGS) -O2 -DDEBUG_LOGIC
+INC_RELEASE = $(INC) -I../../headers -I../logic/include -Iinclude
+CFLAGS_RELEASE = $(CFLAGS) -O2
 RESINC_RELEASE = $(RESINC)
 RCFLAGS_RELEASE = $(RCFLAGS)
 LIBDIR_RELEASE = $(LIBDIR)
-LIB_RELEASE = $(LIB)
+LIB_RELEASE = $(LIB)../logic/bin/Release/liblogic.a ../../external_dependency_builds/opencv/lib/libcorrespondence.a ../../external_dependency_builds/opencv/lib/libmultiview.a ../../external_dependency_builds/opencv/lib/libnumeric.a 
 LDFLAGS_RELEASE = $(LDFLAGS) -s
 OBJDIR_RELEASE = obj/Release
 DEP_RELEASE = 
-OUT_RELEASE = bin/Release/liblogic.a
+OUT_RELEASE = bin/Release/representation
+DYNA= -L../../external_dependency_builds/opencv/lib -lopencv_core -lopencv_imgproc -lopencv_imgcodecs -lopencv_highgui -lopencv_cudaarithm
 
-OBJ_RELEASE = $(OBJDIR_RELEASE)/reco.o
+OBJ_RELEASE = $(OBJDIR_RELEASE)/main.o
 
 all: release
 
@@ -44,10 +45,10 @@ after_release:
 release: before_release out_release after_release
 
 out_release: before_release $(OBJ_RELEASE) $(DEP_RELEASE)
-	$(AR) rcs $(OUT_RELEASE) $(OBJ_RELEASE)
+	$(LD) $(LIBDIR_RELEASE) -o $(OUT_RELEASE) $(OBJ_RELEASE)  $(LDFLAGS_RELEASE) $(LIB_RELEASE)
 
-$(OBJDIR_RELEASE)/reco.o: reco.cpp
-	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c reco.cpp -o $(OBJDIR_RELEASE)/reco.o
+$(OBJDIR_RELEASE)/main.o: main.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c main.cpp -o $(OBJDIR_RELEASE)/main.o
 
 clean_release: 
 	rm -f $(OBJ_RELEASE) $(OUT_RELEASE)

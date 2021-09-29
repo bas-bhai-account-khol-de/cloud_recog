@@ -82,6 +82,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Examples/FeaturedetectandcomputeCudaExample.cpp" />
 		<Unit filename="main.cpp" />
 		<Extensions />
 	</Project>

@@ -15,6 +15,7 @@
 				<Option createDefFile="1" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-DDEBUG_LOGIC" />
 					<Add directory="../../headers" />
 					<Add directory="include" />
 				</Compiler>
@@ -27,10 +28,11 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/debug.h" />
 		<Unit filename="include/reco.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="main.cpp" />
+		<Unit filename="reco.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

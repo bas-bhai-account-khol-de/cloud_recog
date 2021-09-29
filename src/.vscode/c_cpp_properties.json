@@ -4,7 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/usr/include/c++/8"
+                "/usr/include/c++/8",
+                "/media/prakhar/Linux FIles/Flam Apps/Testing and experiment/cloud_recog/headers/"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
