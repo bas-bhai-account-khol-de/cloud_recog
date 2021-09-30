@@ -125,3 +125,79 @@ void compare_image(string query_image_path , _vkps &keypoints,_vgpuM &descriptor
 
 
 }
+
+void compare_video(_vkps &keypoints,_vgpuM &descriptors,_vi &images)
+{
+    dbg_messsage("VIDEO_COMPARE: starting camera ....");
+    vision::VideoCapture cap(0);
+
+    if (!cap.isOpened())
+    {
+        std::cerr << "ERROR - Failed to open VideoCapture for device " + std::to_string(0) + "\n" << std::flush;
+        return;
+    }
+    vision::cuda::Stream stream;
+
+   while(true)
+  {
+    // capture frame
+    vision::Mat frame;
+    if(!cap.read(frame))
+    {
+      continue;
+    }
+
+    // upload to GPU
+    vision::cuda::GpuMat frame_d;
+    frame_d.upload(frame, stream);
+
+    // convert to grayscale
+    vision::cuda::GpuMat frame_gray_d;
+    vision::cuda::cvtColor(frame_d, frame_gray_d,vision::COLOR_BGR2GRAY, 0, stream);
+
+    // create CUDA ORB feature detector
+    vision::Ptr<vision::cuda::ORB> p_orb_d = vision::cuda::ORB::create();
+    p_orb_d->setBlurForDescriptor(true);
+
+    // detect and compute features
+    vision::cuda::GpuMat kp_d;
+    vision::cuda::GpuMat desc_d;
+    p_orb_d->detectAndComputeAsync(frame_gray_d, vision::cuda::GpuMat(), kp_d, desc_d, false, stream);
+    stream.waitForCompletion();
+    vision::Ptr<vision::cuda::DescriptorMatcher> matcher = vision::cuda::DescriptorMatcher::createBFMatcher(vision::NORM_HAMMING);
+    vector<int> feature_point_match_count;
+    for(int i=0;i<descriptors.size();i++)
+    {
+        int feature_point_matches_count=0;
+        std::vector<std::vector<vision::DMatch> > knn_matches_temp;
+        matcher->knnMatch(desc_d,descriptors[i],knn_matches_temp,2);
+        for(std::vector<std::vector<vision::DMatch> >::const_iterator it = knn_matches_temp.begin(); it != knn_matches_temp.end(); ++it)
+        {
+            if(it->size() > 1 && (*it)[0].distance/(*it)[1].distance < 0.7)
+            {
+               feature_point_matches_count++;
+            }
+        }
+        feature_point_match_count.push_back(feature_point_matches_count);
+
+    }
+
+
+    int index_max_element  = distance(feature_point_match_count.begin(),max_element(feature_point_match_count.begin(),feature_point_match_count.end()));
+    dbg_d(feature_point_match_count[index_max_element]);
+    if(20<feature_point_match_count[index_max_element])
+    {
+        vision::imshow("frame",images[index_max_element]);
+        vision::waitKey(0);
+        break;
+    }
+
+    vision::imshow("video",frame);
+
+    if (vision::waitKey(5) == 27)
+  {
+   cout << "Esc key is pressed by user. Stoppig the video" << endl;
+   break;
+  }
+  }
+}

@@ -12,6 +12,7 @@ int main()
     _vkps kp_dataset;
     _vgpuM desc_dataset;
     compute_feature(dataset_images,kp_dataset,desc_dataset);
-    compare_image("/media/prakhar/Linux FIles/Flam Apps/Testing and experiment/DataSets/school_bag/Image_49 Bag.jpg",kp_dataset,desc_dataset,dataset_images);
+    compare_video(kp_dataset,desc_dataset,dataset_images);
+    // compare_image("/media/prakhar/Linux FIles/Flam Apps/Testing and experiment/DataSets/school_bag/Image_49 Bag.jpg",kp_dataset,desc_dataset,dataset_images);
     return 0;
 }

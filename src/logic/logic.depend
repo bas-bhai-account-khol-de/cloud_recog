@@ -2,12 +2,13 @@
 1632912823 source:/media/prakhar/Linux FIles/Flam Apps/Testing and experiment/cloud_recog/src/logic/main.cpp
 	"reco.h"
 
-1632955342 /media/prakhar/Linux FIles/Flam Apps/Testing and experiment/cloud_recog/src/logic/include/reco.h
+1632957791 /media/prakhar/Linux FIles/Flam Apps/Testing and experiment/cloud_recog/src/logic/include/reco.h
 	<iostream>
 	<dirent.h>
 	<sys/types.h>
 	<cstring>
 	<ctime>
+	<opencv2/opencv.hpp>
 	<opencv2/core.hpp>
 	<opencv2/highgui.hpp>
 	<opencv2/imgproc.hpp>
@@ -16,6 +17,8 @@
 	<opencv2/cudaarithm.hpp>
 	<opencv2/cudaimgproc.hpp>
 	<opencv2/cudafeatures2d.hpp>
+	<opencv2/video.hpp>
+	<opencv2/videoio.hpp>
 	"debug.h"
 
 1632834796 /media/prakhar/Linux FIles/Flam Apps/Testing and experiment/cloud_recog/headers/opencv2/opencv.hpp
@@ -647,6 +650,6 @@
 
 1632917750 /media/prakhar/Linux FIles/Flam Apps/Testing and experiment/cloud_recog/src/logic/include/debug.h
 
-1632956000 source:/media/prakhar/Linux FIles/Flam Apps/Testing and experiment/cloud_recog/src/logic/src/reco.cpp
+1632961529 source:/media/prakhar/Linux FIles/Flam Apps/Testing and experiment/cloud_recog/src/logic/src/reco.cpp
 	"reco.h"
 

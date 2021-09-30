@@ -7,6 +7,7 @@
 #include<ctime>
 
 //***************************Vision Libraries********************************//
+#include <opencv2/opencv.hpp>
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
@@ -15,6 +16,8 @@
 #include <opencv2/cudaarithm.hpp>
 #include <opencv2/cudaimgproc.hpp>
 #include <opencv2/cudafeatures2d.hpp>
+#include <opencv2/video.hpp>
+#include <opencv2/videoio.hpp>
 //--------------------------------END vision Libraries---------------------------//
 using namespace std;
 namespace vision = cv;
@@ -58,22 +61,22 @@ void import_from_directory(_vi &images,string folder_name = "");
 void compute_feature(_vi &images,_vkps &kp_dataset,_vgpuM &desc_dataset, unsigned int max_features = 500 );
 
 /**
- * This function starts camera and starts matching image from given 
+ * This function starts camera and starts matching image from given
  * dataset kp and des
  * @brief This fuctions intializes camera matching
- * @param 
- * 
- * 
+ * @param
+ *
+ *
  */
-void start_recognition();
+void compare_video(_vkps &keypoints,_vgpuM &descriptors,_vi &images);
 
 /**
  * @brief this function compares images with database
  * @param image to bec compared
  * @param keypoints cpu keypoints
  * @param desc gpu keypoints
- * 
+ *
  */
-void compare_image(string query_image_path , _vkps &keypoints,_vgpuM &descriptots,_vi &images);
+void compare_image(string query_image_path , _vkps &keypoints,_vgpuM &descriptors,_vi &images);
 
 #endif // RECO_H_INCLUDED
