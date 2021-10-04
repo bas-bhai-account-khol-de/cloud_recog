@@ -7,26 +7,12 @@
 #include<ctime>
 
 //***************************Vision Libraries********************************//
-#include <opencv2/opencv.hpp>
-#include <opencv2/core.hpp>
-#include <opencv2/highgui.hpp>
-#include <opencv2/imgproc.hpp>
-#include <opencv2/imgcodecs.hpp>
-#include <opencv2/core/cuda.hpp>
-#include <opencv2/cudaarithm.hpp>
-#include <opencv2/cudaimgproc.hpp>
-#include <opencv2/cudafeatures2d.hpp>
-#include <opencv2/video.hpp>
-#include <opencv2/videoio.hpp>
+#include "common.h"
 //--------------------------------END vision Libraries---------------------------//
-using namespace std;
-namespace vision = cv;
-#define _vi vector<vision::Mat>
 
-#ifdef DEBUG_LOGIC
-#include"debug.h"
-#define DEBUG_MODE true
-#endif // DEBUG_LOGIC
+//**************************External Libraries**************************************//
+#include "cluster_finder.h"
+//----------------------END External Libraries------------------------------//
 
 typedef vector<vision::cuda::GpuMat> _vgpuM;
 typedef vector<vector<vision::KeyPoint>> _vkps;
