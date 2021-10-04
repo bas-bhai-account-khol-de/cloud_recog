@@ -15,6 +15,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-DDEBUG_LOGIC" />
 					<Add directory="../../headers" />
 					<Add directory="../logic/include" />
 					<Add directory="include" />
@@ -79,6 +80,8 @@
 					<Add library="../../external_dependency_builds/opencv/lib/libopencv_xfeatures2d.so" />
 					<Add library="../../external_dependency_builds/opencv/lib/libopencv_xobjdetect.so" />
 					<Add library="../../external_dependency_builds/opencv/lib/libopencv_xphoto.so" />
+					<Add library="../../external_dependency_builds/opencv/lib/libopencv_video.so" />
+					<Add library="../../external_dependency_builds/opencv/lib/libopencv_videoio.so" />
 				</Linker>
 			</Target>
 		</Build>
@@ -87,7 +90,7 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/sources.h" />
-		<Unit filename="main.cpp" />
+		<Unit filename="src/main.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
