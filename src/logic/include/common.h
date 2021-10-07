@@ -20,11 +20,21 @@ using namespace std;
 namespace vision = cv;
 //-----------------------END Namespace------------------------------------------//
 
+//************************Structs*************************//
+
+struct _vision_images
+{
+    vision::Mat image;
+    string location;
+};
+
+//-----------------------END Structs----------------------//
 
 
 //***************************************Type Defines*****************************//
 
-#define _vi vector<vision::Mat>
+typedef vector<vision::Mat> _vi ;
+typedef vector<_vision_images> _visi;
 typedef vector<vision::cuda::GpuMat> _vgpuM;
 typedef vector<vector<vision::KeyPoint>> _vkps;
 //---------------------------------END Type Defines---------------------------//
@@ -36,6 +46,12 @@ typedef vector<vector<vision::KeyPoint>> _vkps;
 #define DEBUG_MODE true
 #endif // DEBUG_LOGIC
 //--------------------------------------END Debug Libraries-----------------------------------//
+
+
+//****************Common Functions***************************//
+/*Calculate standard deviation for a population of numbers*/
+float StandardDeviation(vector<float> population, float N);
+//------------------END Common Functions-------------------------------//
 
 
 #endif // COMMON_H_INCLUDED
