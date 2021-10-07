@@ -308,7 +308,7 @@ void folder_images_image_descriptions(vector<_image_description> &folder_image_d
 }
 
 
-void compare_video_in_batch(vector<vector<_image_description>> &image_dataset )
+void compare_video_in_batch(vector<vector<_image_description>> &image_dataset, int number_of_clusters )
 {
     dbg_messsage("VIDEO_COMPARE: starting camera ....");
     vision::VideoCapture cap(0);
@@ -355,7 +355,7 @@ void compare_video_in_batch(vector<vector<_image_description>> &image_dataset )
         matcher->knnMatch(desc_d,image_dataset[image_cluster_number][i].desc,knn_matches_temp,2);
         for(std::vector<std::vector<vision::DMatch> >::const_iterator it = knn_matches_temp.begin(); it != knn_matches_temp.end(); ++it)
         {
-            if(it->size() > 1 && (*it)[0].distance/(*it)[1].distance < 0.7)
+            if(it->size() > 1 && (*it)[0].distance/(*it)[1].distance < 0.67)
             {
                feature_point_matches_count++;
             }
@@ -383,7 +383,11 @@ void compare_video_in_batch(vector<vector<_image_description>> &image_dataset )
     // }
 
     vision::imshow("video",frame);
-
+    image_cluster_number++;
+    if(image_cluster_number >= number_of_clusters)
+    {
+        image_cluster_number =0;
+    }
     if (vision::waitKey(5) == 27)
   {
    cout << "Esc key is pressed by user. Stoppig the video" << endl;

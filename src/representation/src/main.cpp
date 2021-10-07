@@ -36,7 +36,7 @@ int main()
     images_in_dataset.push_back(images_temp);
     }
 
-    compare_video_in_batch(images_in_dataset);
+    compare_video_in_batch(images_in_dataset,number_of_folders);
 
 
 

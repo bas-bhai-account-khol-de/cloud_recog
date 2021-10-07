@@ -111,7 +111,7 @@ void folder_images_image_descriptions(vector<_image_description> &folder_image_d
  *
  *
  */
-void compare_video_in_batch(vector<vector<_image_description>> &image_dataset );
+void compare_video_in_batch(vector<vector<_image_description>> &image_dataset,int number_of_clusters =1);
 
 
 
