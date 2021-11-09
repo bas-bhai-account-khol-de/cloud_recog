@@ -29,12 +29,14 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/cluster_finder.h" />
+		<Unit filename="include/clustring.h" />
 		<Unit filename="include/common.h" />
 		<Unit filename="include/debug.h" />
 		<Unit filename="include/reco.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="src/cluster_finder.cpp" />
+		<Unit filename="src/clustring.cpp" />
 		<Unit filename="src/reco.cpp" />
 		<Extensions />
 	</Project>

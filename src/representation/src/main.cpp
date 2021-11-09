@@ -1,8 +1,11 @@
 #include <iostream>
-#include"reco.h"
+#include "clustring.h"
 #include "sources.h"
 
+
+
 using namespace std;
+using namespace ml_pack_clustering;
 
 int main()
 {
@@ -25,35 +28,40 @@ int main()
     // //_video_countours_average();
     // _video_gradient_magnitude();
 
-    int number_of_folders = 2;
-    string base  = "/media/prakhar/Linux FIles/Flam Apps/Testing and experiment/DataSets/";
-      DIR *dir = opendir(base.c_str());
-    vector <string> folders;
-    struct dirent *entry = readdir(dir);
+    // int number_of_folders = 2;
+    // string base  = "/media/prakhar/Linux FIles/Flam Apps/Testing and experiment/DataSets/";
+    //   DIR *dir = opendir(base.c_str());
+    // vector <string> folders;
+    // struct dirent *entry = readdir(dir);
 
-    while (entry != NULL && number_of_folders)
-    {
-        if (entry->d_type == DT_DIR && strcmp(entry->d_name,".") &&  strcmp(entry->d_name,".."))
-            printf("%s\n", entry->d_name);
-         number_of_folders--;
-        folders.push_back(string(entry->d_name));
-        entry = readdir(dir);
-    }
+    // while (entry != NULL && number_of_folders)
+    // {
+    //     if (entry->d_type == DT_DIR && strcmp(entry->d_name,".") &&  strcmp(entry->d_name,".."))
+    //         printf("%s\n", entry->d_name);
+    //      number_of_folders--;
+    //     folders.push_back(string(entry->d_name));
+    //     entry = readdir(dir);
+    // }
 
-    closedir(dir);
+    // closedir(dir);
 
-    vision::waitKey(1000);
-    // string folders[number_of_folders]={"Buildings","apple fruit","books","laptop","mug","school bag","smartphone","Trees","Tshirt","Water Bottle"};
-    vector<vector<_image_description>> images_in_dataset;
+    // vision::waitKey(1000);
+    // // string folders[number_of_folders]={"Buildings","apple fruit","books","laptop","mug","school bag","smartphone","Trees","Tshirt","Water Bottle"};
+    // vector<vector<_image_description>> images_in_dataset;
 
-    for (int i = 0;i < folders.size();i++)
-    {
-    vector<_image_description> images_temp;
-    folder_images_image_descriptions(images_temp,base+folders[i]);
-    images_in_dataset.push_back(images_temp);
-    }
+    // for (int i = 0;i < folders.size();i++)
+    // {
+    // vector<_image_description> images_temp;
+    // folder_images_image_descriptions(images_temp,base+folders[i]);
+    // images_in_dataset.push_back(images_temp);
+    // }
 
-    compare_video_in_batch(images_in_dataset,folders.size());
+    // compare_video_in_batch(images_in_dataset,folders.size());
+
+    _visi images;
+
+    import_from_directory(images,"/media/prakhar/Linux FIles/Flam Apps/Testing and experiment/DataSets/Buildings");
+    cluster(images);
 
 
 
