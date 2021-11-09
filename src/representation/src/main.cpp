@@ -25,7 +25,7 @@ int main()
     // //_video_countours_average();
     // _video_gradient_magnitude();
 
-    int number_of_folders = 20;
+    int number_of_folders = 2;
     string base  = "/media/prakhar/Linux FIles/Flam Apps/Testing and experiment/DataSets/";
       DIR *dir = opendir(base.c_str());
     vector <string> folders;
@@ -42,7 +42,7 @@ int main()
 
     closedir(dir);
 
-    vision::waitKey(10000);
+    vision::waitKey(1000);
     // string folders[number_of_folders]={"Buildings","apple fruit","books","laptop","mug","school bag","smartphone","Trees","Tshirt","Water Bottle"};
     vector<vector<_image_description>> images_in_dataset;
 

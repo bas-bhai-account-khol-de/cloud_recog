@@ -1,4 +1,5 @@
 #include"reco.h"
+#include <cstdio>
 
 
 void init_reco(int v)
@@ -310,6 +311,7 @@ void folder_images_image_descriptions(vector<_image_description> &folder_image_d
 
 void compare_video_in_batch(vector<vector<_image_description>> &image_dataset, int number_of_clusters )
 {
+    string loc="";
     dbg_messsage("VIDEO_COMPARE: starting camera ....");
     vision::VideoCapture cap(0);
 
@@ -365,8 +367,9 @@ void compare_video_in_batch(vector<vector<_image_description>> &image_dataset, i
         {
             dbg_messsage("image found");
             vision::Mat show = vision::imread(image_dataset[image_cluster_number][i].image.location);
+            loc = image_dataset[image_cluster_number][i].image.location;
             vision::imshow("found Image",show);
-            vision::waitKey(0);
+
             break;
         }
 
@@ -388,7 +391,17 @@ void compare_video_in_batch(vector<vector<_image_description>> &image_dataset, i
     {
         image_cluster_number =0;
     }
-    if (vision::waitKey(5) == 27)
+
+    if (vision::waitKey(1) == (int)('p'))
+  {
+   cout << "Deleting" << endl;
+    if(loc!="")
+    {
+        remove(loc.c_str());
+        loc="";
+    }
+  }
+    else if (vision::waitKey(1) == 27)
   {
    cout << "Esc key is pressed by user. Stoppig the video" << endl;
    break;

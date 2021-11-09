@@ -10,6 +10,7 @@
         "*.tcc": "cpp",
         "cstdint": "cpp",
         "type_traits": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "iostream": "cpp"
     }
 }
