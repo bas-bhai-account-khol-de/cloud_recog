@@ -11,17 +11,17 @@ struct _scalarized_image_coordinates
 
 namespace ml_pack_clustering{
 /**
- * @brief this functions clusters your image
- * @param images images that are to be clustered togather
+ * @brief this function clusters your image
+ * @param images images that are to be clustered together
  * @param k number of cluster
- * @param features the number of freature
+ * @param features the number of features
  * ********************************************/
 void cluster(_visi &images,int k=2,int features = 200);
 
 /**
- * @brief this function converts the descriptos to scalar values
- * @param descriptons this is the array of images that are to be converted
- * @param scalar_coordinates the scalarized descriptos are filed in this array
+ * @brief this function converts the descriptors to scalar values
+ * @param descriptions this is the array of images that are to be converted
+ * @param scalar_coordinates the scalarized descriptors are filed in this array
  *
  * ***************************/
 
