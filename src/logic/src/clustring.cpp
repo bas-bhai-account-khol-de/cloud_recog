@@ -1,7 +1,7 @@
 #include "clustring.h"
 
 
-// This function does KMeans Clustering(OpenCV KMeans) on ORB feature descriptors of all the images 
+// This function does KMeans Clustering on ORB feature descriptors of all the images 
 //and then using the BF Matcher to find the best matched image from whole database.
 
 void ml_pack_clustering::cluster(_visi &images,int k, int features)
