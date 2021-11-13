@@ -21,6 +21,7 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add option="-larmadillo -lmlpack" />
 				</Linker>
 			</Target>
 		</Build>

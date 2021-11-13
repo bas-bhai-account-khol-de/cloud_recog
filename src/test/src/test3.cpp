@@ -44,7 +44,7 @@ int main()
 	comp2.assign(comp.begin(), comp.begin()+comp_len);
 
 	vector<float> fin = FindFeatures(find_image);
-	vector<float> fin2 ;
+	vector<float> fin2;
 	dbg_d(fin.size());
 
 	fin2.assign(fin.begin(), fin.begin()+comp_len);

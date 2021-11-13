@@ -97,7 +97,7 @@ void compute_feature(_vi &images,_vkps &kp_dataset,_vgpuM &desc_dataset,unsigned
     //INITILIZATIONS
 
     vision::cuda::Stream current_stream;
-    vision::Ptr<vision::cuda::ORB> p_orb_d = vision::cuda::ORB::create();
+    vision::Ptr<vision::cuda::ORB> p_orb_d = vision::cuda::ORB::create(max_features);
     p_orb_d->setBlurForDescriptor(true);
     //---------------------------------------------------
     int i=0;
@@ -137,7 +137,7 @@ void compute_feature(_visi &images,vector<_image_description> &image_desc,unsign
     //INITILIZATIONS
 
     vision::cuda::Stream current_stream;
-    vision::Ptr<vision::cuda::ORB> p_orb_d = vision::cuda::ORB::create();
+    vision::Ptr<vision::cuda::ORB> p_orb_d = vision::cuda::ORB::create(max_features);
     p_orb_d->setBlurForDescriptor(true);
     //---------------------------------------------------
     int i=0;
@@ -407,7 +407,9 @@ void compare_video_in_batch(vector<vector<_image_description>> &image_dataset, i
    break;
   }
   }
+
 }
+
 
 
 

@@ -60,8 +60,16 @@ int main()
 
     _visi images;
 
-    import_from_directory(images,"/media/prakhar/Linux FIles/Flam Apps/Testing and experiment/DataSets/Buildings");
-    cluster(images);
+    import_from_directory(images,"/media/prakhar/Linux FIles/Flam Apps/Testing and experiment/DataSets/beseter");
+    vector<_image_description> image_descriptions;
+    compute_feature(images,image_descriptions);
+
+    vector<vector<float>> centroids;
+    vector<vector<_scalarized_image_coordinates>> clusters;
+    cluster(image_descriptions,centroids,clusters);
+    dbg_messsage("clustered");
+    dbg_d(clusters[0].size());
+    compare_video_in_clusters(image_descriptions[0],clusters,centroids);
 
 
 

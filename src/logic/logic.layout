@@ -2,27 +2,7 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Release" />
-	<File name="include/reco.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2277" topLine="53" />
-		</Cursor>
-	</File>
-	<File name="src/clustring.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="83" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src/reco.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="12287" topLine="186" />
-		</Cursor>
-	</File>
 	<File name="include/cluster_finder.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include/debug.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
@@ -32,9 +12,29 @@
 			<Cursor1 position="485" topLine="27" />
 		</Cursor>
 	</File>
-	<File name="include/clustring.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include/reco.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="156" topLine="0" />
+			<Cursor1 position="2277" topLine="53" />
+		</Cursor>
+	</File>
+	<File name="src/reco.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="12287" topLine="186" />
+		</Cursor>
+	</File>
+	<File name="include/clustring.h" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="370" topLine="6" />
+		</Cursor>
+	</File>
+	<File name="include/debug.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/clustring.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2500" topLine="75" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

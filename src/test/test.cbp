@@ -20,6 +20,7 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add option="-larmadillo -lmlpack" />
 					<Add library="../logic/bin/Release/liblogic.a" />
 					<Add library="../../external_dependency_builds/opencv/lib/libcorrespondence.a" />
 					<Add library="../../external_dependency_builds/opencv/lib/libmultiview.a" />
@@ -102,11 +103,19 @@
 			<Option compile="0" />
 			<Option link="0" />
 		</Unit>
+		<Unit filename="src/test1.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
 		<Unit filename="src/test2.cpp">
 			<Option compile="0" />
 			<Option link="0" />
 		</Unit>
-		<Unit filename="src/test3.cpp" />
+		<Unit filename="src/test3.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="src/test4.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

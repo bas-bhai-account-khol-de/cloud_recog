@@ -116,6 +116,7 @@ void compare_video_in_batch(vector<vector<_image_description>> &image_dataset,in
 
 
 
+
 /**
  * @brief this function compares images with database
  * @param image to bec compared
